@@ -1,10 +1,10 @@
 export default class Dep{
 	static target = null
-	public subs:[]
+	public subs:any []
 	constructor(){
 		this.subs = []
 	}
-	private addSub(sub:object){
+	private addSub(sub){
 		this.subs.push(sub)
 	}
 	private notify(){
