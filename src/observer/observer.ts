@@ -14,15 +14,17 @@ function Observer(data){
 	console.log(dep)
 	return new Proxy(data,{
 		get:function getter(target, key, receiver):any{
-			console.log(target, key, receiver)
+			if(Dep.target){
+				dep.addSub(Dep.target)
+			}
 			return Reflect.get(target, key, receiver);
 		},
 		set:function setter(target, key, value, receiver):any{
-			console.log(target, key, value, receiver)
 			if(value === Reflect.get(target, key)){
 				return
 			}
 			Reflect.set(target, key, value, receiver);
+			dep.notify()
 		}
 	})
 }

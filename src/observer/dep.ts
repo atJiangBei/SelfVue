@@ -4,10 +4,10 @@ export default class Dep{
 	constructor(){
 		this.subs = []
 	}
-	private addSub(sub){
+	addSub(sub:object){
 		this.subs.push(sub)
 	}
-	private notify(){
+	notify(){
 		const subs = this.subs
 		let l = subs.length
 		while(l--){
