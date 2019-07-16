@@ -11,7 +11,7 @@ export default function observer(data):any{
 }
 function Observer(data){
 	const dep = new Dep()
-	console.log(dep)
+	
 	return new Proxy(data,{
 		get:function getter(target, key, receiver):any{
 			if(Dep.target){
@@ -21,10 +21,11 @@ function Observer(data){
 		},
 		set:function setter(target, key, value, receiver):any{
 			if(value === Reflect.get(target, key)){
-				return
+				return true
 			}
 			Reflect.set(target, key, value, receiver);
 			dep.notify()
+			return true
 		}
 	})
 }
