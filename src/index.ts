@@ -12,6 +12,9 @@ function Vue(options){
 	new Watcher(this,data,"children.one",function(nvl,ovl){
 		console.log("我是name",nvl,ovl)
 	})
+	new Watcher(this,data,"children.one",function(nvl,ovl){
+		console.log("我是name",nvl,ovl)
+	})
 }
 
 
